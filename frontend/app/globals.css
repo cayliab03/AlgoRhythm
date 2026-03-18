@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* --- LOGO & BPM PULSE --- */
+@keyframes gradient-move {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient-slow {
+  background-size: 200% 200%;
+  animation: gradient-move 8s ease infinite;
+}
+
+@keyframes bpm-pulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.1); filter: brightness(1.4); }
+}
+.animate-bpm {
+  animation: bpm-pulse infinite ease-in-out;
+}
+
+/* --- SPECTRUM LOADER ANIMATIONS --- */
+@keyframes spectrum-grow {
+  0% { transform: scaleY(0.1); opacity: 0; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes jitter {
+  0%, 100% { height: 60%; }
+  50% { height: 90%; }
+}
+
+.animate-spectrum {
+  animation: spectrum-grow 0.5s ease-out forwards, jitter 0.8s infinite ease-in-out;
+  transform-origin: bottom;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.category-dot-active {
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+  background-color: white !important;
+}
+
+/* Update your globals.css with this new rule */
+.group:hover div[style*="--hover-color"] {
+  color: var(--hover-color);
+  filter: drop-shadow(0 0 5px var(--hover-color));
+}
