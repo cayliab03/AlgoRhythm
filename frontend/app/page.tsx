@@ -38,7 +38,7 @@ export default function Home() {
 
   const deleteSong = (id: number) => {
     if (confirm("Delete this song?")) {
-      fetch(`http://127.0.0.1:8000/songs/${id}`, { method: 'DELETE' }).then(fetchSongs);
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/songs/${id}`, { method: 'DELETE' }).then(fetchSongs);
     }
   };
 
@@ -209,7 +209,7 @@ export default function Home() {
                               </div>
                             </div>
                             <div className={`transition-opacity duration-700 ${isPlaying ? 'opacity-100' : 'opacity-30 group-hover:opacity-100'}`}>
-                              <Waveform ref={(el: any) => (waveformRefs.current[song[0]] = el)} audioUrl={`http://127.0.0.1:8000/play/${encodeURIComponent(song[1])}`} energy={song[3]} color={neonColor} />
+                              <Waveform ref={(el: any) => (waveformRefs.current[song[0]] = el)} audioUrl={`${process.env.NEXT_PUBLIC_API_URL}/play/${encodeURIComponent(song[1])}`} energy={song[3]} color={neonColor} />
                             </div>
                           </div>
                         </div>
