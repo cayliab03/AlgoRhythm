@@ -1,6 +1,9 @@
 [build]
+  # This tells Netlify to "Step into" the frontend folder first
   base = "frontend"
+  # This runs the build command inside that folder
   command = "npm run build"
+  # This looks for the finished site inside the .next folder
   publish = ".next"
 
 [[redirects]]
