@@ -14,7 +14,7 @@ export default function Uploader({ onUploadSuccess }: { onUploadSuccess: () => v
     formData.append('file', file);
 
     try {
-      await fetch('http://127.0.0.1:8000/analyze', {
+      await fetch('${process.env.NEXT_PUBLIC_API_URL}/analyze', {
         method: 'POST',
         body: formData,
       });
