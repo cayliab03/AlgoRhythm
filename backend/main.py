@@ -9,8 +9,6 @@ import io
 from pydub import AudioSegment  # For .caf transcoding
 from analyzer import get_audio_features
 
-AudioSegment.converter = "/usr/local/bin/ffmpeg"
-
 app = FastAPI()
 
 app.add_middleware(
